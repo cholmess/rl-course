@@ -2,7 +2,7 @@
 
 A personal 28-week reinforcement learning course, from bandits to fine-tuning language models with RLHF, DPO and GRPO, and then to RL on real company data.
 
-The full roadmap, quizzes and grades live on the course page (the roadmap artifact in the Claude project). This repo holds the code: one folder per module, each with a starter file, tests and a write-up.
+The full roadmap, quizzes and grades live on the [course page](https://claude.ai/artifact/6MDKxVGYBNuCoDhpLwLiPf) (private to you). This repo holds the code: one folder per module, each with a starter file, tests and a write-up.
 
 ## How each module works
 
