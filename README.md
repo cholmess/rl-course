@@ -14,7 +14,8 @@ The full roadmap, quizzes and grades live on the [course page](https://claude.ai
    - Run the tests: `pytest modules/<module>`.
    - Run the experiment and look at the plots.
    - Finish `WRITEUP.md`: what happened, was your prediction right, and why.
-4. **Submit**: commit and push, then tell Claude in the project thread that the module is ready for grading.
+4. **Write your book chapter** in `book/` (see [book/README.md](book/README.md)): one or two pages in your own words, from `book/TEMPLATE.md`. Not graded, but Claude gives you feedback.
+5. **Submit**: commit and push, then tell Claude in the project thread that the module is ready for grading.
 
 You move on at A- (85+). See [RUBRIC.md](RUBRIC.md). Your grades are logged in [PROGRESS.md](PROGRESS.md).
 
