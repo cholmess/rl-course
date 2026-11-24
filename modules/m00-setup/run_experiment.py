@@ -31,7 +31,8 @@ def main():
         print(f"{name:<18}{r.mean():8.1f}{r.std():8.1f}{r.min():6.0f}{r.max():6.0f}{(r == 500).mean() * 100:9.0f}%")
 
     fig, ax = plt.subplots(figsize=(7, 4))
-    ax.boxplot(list(results.values()), labels=list(results.keys()), showmeans=True)
+    ax.boxplot(list(results.values()), showmeans=True)
+    ax.set_xticklabels(list(results.keys()))  # works on every matplotlib version
     ax.axhline(500, color="grey", linestyle="--", linewidth=1, label="max return (500)")
     ax.set_ylabel(f"episode return ({N_EPISODES} seeds)")
     ax.set_title("CartPole-v1: hand-written policies")

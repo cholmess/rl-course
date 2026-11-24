@@ -2,7 +2,7 @@
 
 | Module | Started | Quiz | Experiment | Write-up | Total | Grade | Notes |
 |---|---|---|---|---|---|---|---|
-| M0 Setup and diagnostic | 2026-11-22 | 60% (diagnostic) | pending | pending | – | – | Diagnostic 12.5/21. Review set 6/8 (2026-11-24). CartPole experiment still to push |
+| M0 Setup and diagnostic | 2026-11-22 | 60% (diagnostic) | 40/40 (code) | pending | – | – | Diagnostic 12.5/21. Review set 6/8 (2026-11-24). CartPole code pushed 2026-11-24: tests pass, 100/100 episodes at 500. WRITEUP.md still blank, so module not closed |
 
 ## Weak spots to review
 
