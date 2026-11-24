@@ -1,20 +1,20 @@
-# Mi libro de RL
+# Libro de RL de Christopher
 
-Un capítulo por módulo, escrito por ti con tus propias palabras, al terminar cada módulo. El objetivo no es copiar el material: es comprobar que puedes explicarlo. Si no puedes escribirlo sin mirar, todavía no lo dominas.
+Un capítulo por módulo, escrito por Claude al cerrar cada módulo y pensado como **recordatorio**: los conceptos clave explicados con claridad, más **tus errores reales** (sacados de tus quizzes, tu código y tu write-up) y cómo corregirlos. Es el documento que abrirás antes de un examen, de una entrevista o de empezar el siguiente módulo.
 
-## Reglas
+## Qué lleva cada capítulo
 
-- **Idioma:** el que prefieras (español está bien).
-- **Extensión:** 1 a 2 páginas (400 a 800 palabras), más las figuras que quieras.
-- **Cuándo:** al final del módulo, después de la quiz y del experimento. Unos 45 minutos.
-- **Sin mirar notas** en el primer borrador. Después revisa con el material y corrige.
-- **Archivo:** `book/cNN-nombre.md` (por ejemplo `c01-bandits.md`), copiando `TEMPLATE.md`.
-- **Entrega:** haz commit y push junto con el experimento. Claude te devuelve comentarios en el hilo: qué está claro, qué es incorrecto o impreciso y qué falta. No cuenta para la nota del módulo.
+- Las ideas del módulo en pocas páginas, con las ecuaciones y un ejemplo numérico.
+- **Tus errores**, tal como pasaron, con la explicación de por qué estaban mal.
+- Un mini-test de repaso para releer en frío.
+- Cómo conecta con el siguiente módulo y con tu objetivo de resolver un problema de RL en el trabajo.
+
+## Cuándo se escribe
+
+Cuando califico un módulo: el capítulo se sube al repo junto con las notas, en `book/cNN-nombre.md`. Tú puedes comentar, corregir o añadir tus propias notas al final de cualquier capítulo (sección «Mis notas»).
 
 ## Índice
 
 | Cap. | Módulo | Estado |
 |---|---|---|
-| 0 | Preparación y diagnóstico | pendiente |
-
-Se irá ampliando con cada módulo. Al final del curso, el libro se puede publicar como está o convertirse en un sitio con mdBook o similar.
+| 0 | Preparación y diagnóstico | escrito (el experimento de CartPole se añadirá al calificarlo) |

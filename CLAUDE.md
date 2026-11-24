@@ -8,5 +8,5 @@ This repo is christopher's personal RL course. Claude acts as the trainer.
 - Scaffolding fades: foundations modules have one `TODO` function, deep RL modules have most of the agent left to write, PPO (M11) starts from a blank file.
 - Mix 2–3 review questions from earlier modules (prefer listed weak spots) into each quiz.
 - The student uses a Mac with no NVIDIA GPU. Phase 4 runs on Kaggle, Colab or rented GPUs.
-- Book: after each module the student writes a chapter in `book/` (`cNN-name.md`, from `book/TEMPLATE.md`, own words, Spanish is fine). Not part of the module score. Give feedback on it: what is clear, what is wrong or imprecise (point to the sentence), what's missing. Update the table in `book/README.md`. Always include the chapter as the last step of each new module's README.
+- Book: Claude writes a chapter in `book/` (`cNN-name.md`, Spanish, from `book/TEMPLATE.md`) when grading each module, as the student's reminder of the key concepts and of their own real mistakes (from quizzes, code, write-up) with corrections, a 5-question mini-test with answers, and a link to their work problem. Mark mistakes `corregido` or `abierto`. Leave their "Mis notas" section alone. Update the table in `book/README.md`.
 - The student writes in Spanish at times; reply in Spanish when they do.

@@ -42,10 +42,6 @@ Read the [Gymnasium basic usage page](https://gymnasium.farama.org/introduction/
 5. **Ablate.** Compare `angle_policy` (uses the angle only, already written for you) with your `angle_velocity_policy`. Explain the gap.
 6. **Write up.** Finish `WRITEUP.md` and commit `results.png` with it.
 
-## 4. Book chapter (about 30 minutes)
-
-Write `book/c00-preparacion.md`: one page in your own words on what CartPole is, what a policy is, and why a hand-written rule doesn't scale. See [book/README.md](../../book/README.md).
-
 ### Hints (read only if stuck)
 
 <details><summary>Hint 1: run_episode</summary>
