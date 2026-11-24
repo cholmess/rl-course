@@ -1,6 +1,6 @@
 # Capítulo 0: Preparación y diagnóstico
 
-*Calificación: diagnóstico 60 % (12,5/21), repaso 6/8 · Noviembre 2026. El experimento de CartPole se añadirá aquí cuando se califique.*
+*Calificación del módulo: 89 (A−) · diagnóstico 60 % (12,5/21), repaso 6/8, experimento 40/40, write-up 19/20 · Noviembre 2026*
 
 ## Las ideas en breve
 
@@ -36,6 +36,24 @@ Con r = 1 y γ = 0,9: G = 10. Con r = 2 y γ = 0,5: G = 4. El descuento hace que
 3. `loss.backward()`: calcula los gradientes y los guarda en `.grad`. **No cambia los pesos.**
 4. `optimizer.step()`: actualiza los pesos usando esos gradientes.
 
+## El experimento de CartPole: lo que demostró
+
+Tres políticas escritas a mano, 100 episodios cada una (máximo 500):
+
+| Política | Retorno medio |
+|---|---|
+| aleatoria | 25 |
+| solo ángulo (`theta > 0`) | 41 |
+| ángulo + velocidad (`theta + k·theta_dot > 0`) | 500 |
+
+**Por qué falla la política de solo ángulo.** Cuando el palo cruza la vertical todavía lleva velocidad angular. La política solo mira el signo del ángulo, así que corrige tarde, se pasa, y las oscilaciones crecen hasta que el palo cae. La velocidad angular da *amortiguamiento*: permite actuar antes de que la inclinación sea grande.
+
+**La sorpresa sobre k.** Con k = 0 la política falla (41). Con k = 0,1 ya llega a 500 en todos los episodios, y con k = 0,5 también. Con k = 1 baja a 493 y con k = 2 a 414: si pesas demasiado la velocidad, pierdes precisión sobre la inclinación actual. Lección: pocas veces hay un único valor bueno; hay un rango, y uno de los dos extremos es el que rompe.
+
+**Un 500 no es el final de la historia.** Con 5000 pasos en vez de 500, la política con k = 0,5 falla en 67 de 100 semillas, y falla **porque el carro se sale de la pista** (por ejemplo, semilla 0: paso 582, x = −2,40 con el ángulo casi en 0). La regla solo mira `theta` y `theta_dot`; puede mantener el palo vertical mientras el carro deriva. Es un caso pequeño de algo que verás siempre en RL: **optimizas lo que mides**. Si el estado o la recompensa no incluyen algo importante, el agente lo ignora.
+
+**Por qué hay que aprender las políticas.** Aquí bastó con un poco de física. En problemas con muchas variables, muchas acciones y efectos retardados, nadie puede diseñar la regla a mano. Ese es el resto del curso.
+
 ## Cómo se conecta
 Los bandidos (módulo 1) son puro valor esperado y varianza. El descuento y la ecuación v = (I − γP)⁻¹ r son el módulo 2. El bucle de PyTorch vuelve en el módulo 7 y se usa en todo lo demás.
 
@@ -52,6 +70,8 @@ Los bandidos (módulo 1) son puro valor esperado y varianza. El descuento y la e
 | E[X²] con X = ±2 | 0 | Cuadrar antes de promediar da 4. Promediar y cuadrar no conmutan. | **abierto** |
 | `sum(axis=1)` en forma (4, 7) | (7,) | El eje nombrado desaparece: (4,). Pruébalo con `np.ones((4,7)).sum(axis=1).shape`. | **abierto** |
 
+Del experimento no hubo errores de código: las 6 pruebas pasaron a la primera. Un solo desajuste de calibración: esperabas 120 para la política de solo ángulo y dio 41; esperabas 400 para la de ángulo + velocidad y dio 500. Es normal, pero merece apuntarse: en RL las intuiciones sobre «cuánto ayuda» una pequeña señal extra suelen quedarse cortas.
+
 Dos fallos «de ideas» más: pensar que el gradiente da el camino más corto al óptimo, y describir RL solo como «recompensas y penalizaciones» sin mencionar exploración ni crédito retardado.
 
 Lo que sí dominas: álgebra lineal (4/4), derivadas (regla del producto y de la cadena), indexación con máscaras en NumPy, `argmax` y semillas reproducibles.
@@ -66,6 +86,8 @@ Lo que sí dominas: álgebra lineal (4/4), derivadas (regla del producto y de la
 *Respuestas:* 1) 0,24. 2) 6. 3) 9 y 0. 4) (6, 5). 5) zero_grad, pérdida, backward, step.
 
 ## Hacia tu problema en el trabajo
+La lección del carro que se sale de la pista: antes de pensar en algoritmos, pregúntate qué incluye tu estado y tu recompensa, y qué se queda fuera.
+
 Ya sabes que el retorno descontado es lo que se optimiza, y que la varianza de las estimaciones decide cuántos datos necesitas. Con datos de logs de empresa (fase 5) la pregunta clave será cuántas muestras hacen falta para estimar bien una política nueva: la regla 1/√N empieza aquí.
 
 ## Mis notas

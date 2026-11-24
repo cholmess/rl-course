@@ -17,4 +17,4 @@ Cuando califico un módulo: el capítulo se sube al repo junto con las notas, en
 
 | Cap. | Módulo | Estado |
 |---|---|---|
-| 0 | Preparación y diagnóstico | escrito (el experimento de CartPole se añadirá al calificarlo) |
+| 0 | Preparación y diagnóstico | completo (A−) |
