@@ -23,8 +23,9 @@ def angle_velocity_policy(obs: np.ndarray, rng: np.random.Generator) -> int:
 
     Return 0 (push left) or 1 (push right).
     """
-    # TODO: write your rule. See Hint 2 in README.md if you're stuck.
-    raise NotImplementedError
+    theta = obs[2]
+    theta_dot = obs[3]
+    return 1 if theta + 0.5 * theta_dot > 0 else 0
 
 
 def run_episode(env: gym.Env, policy, seed: int) -> float:
@@ -34,5 +35,14 @@ def run_episode(env: gym.Env, policy, seed: int) -> float:
     - Create the policy's random generator with `np.random.default_rng(seed)`.
     - Step until the episode is terminated or truncated.
     """
-    # TODO: implement the agent-environment loop. See Hint 1 in README.md.
-    raise NotImplementedError
+    obs, _ = env.reset(seed=seed)
+    rng = np.random.default_rng(seed)
+    total_reward = 0.0
+
+    while True:
+        action = policy(obs, rng)
+        obs, reward, terminated, truncated, _ = env.step(action)
+        total_reward += reward
+
+        if terminated or truncated:
+            return total_reward
