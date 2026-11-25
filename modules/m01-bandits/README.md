@@ -4,7 +4,9 @@
 
 A bandit is RL with the hard parts removed: your actions don't change what situation you're in next, you only choose which arm to pull and see a reward. What's left is the central tension of the whole field: **explore** to learn which arm is good, or **exploit** what you already believe.
 
-## 1. Read (about 2 hours)
+## 1. Read (about 1 to 2 hours)
+
+The quickest way is the **reading guide on the course page** ("Lecturas", written to be read on a phone). It covers sections 2.1 to 2.9 in about 40 minutes. If you want more depth, the original is:
 
 Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed., free at [incompleteideas.net/book/RLbook2020.pdf](http://incompleteideas.net/book/RLbook2020.pdf)), **chapter 2, sections 2.1 to 2.8**. Skim 2.9 (associative search, also called contextual bandits): you'll come back to it in phase 5 for your own work problem.
 
@@ -32,8 +34,8 @@ Everything is provided (`bandits.py`, `run_experiment.py`, the gradient bandit) 
 
 1. **Predict.** Fill in the predictions table in `WRITEUP.md` *before* you write or run any code.
 2. **Implement** the three `TODO`s. Run `pytest modules/m01-bandits` as you go: the tests tell you which part is wrong.
-3. **Run** `python modules/m01-bandits/run_experiment.py` (about 2 minutes; use `--runs 100` while debugging). It prints three tables and saves three plots:
-   - `results_epsilon.png`: greedy vs ε = 0.01 vs ε = 0.1.
+3. **Run** `python modules/m01-bandits/run_experiment.py` (about 3 minutes; use `--runs 100` while debugging). It prints three tables and saves three plots:
+   - `results_epsilon.png`: greedy vs ε = 0.01 vs ε = 0.1, over 3,000 steps so the long-run effect shows up.
    - `results_compare.png`: ε-greedy vs UCB vs optimistic initial values vs the gradient bandit.
    - `results_baseline.png`: **the break-it-on-purpose experiment**, the gradient bandit with and without a baseline when all true values are shifted up by 4.
 4. **Write up** `WRITEUP.md` and commit the plots with it. Answer in English or Spanish.

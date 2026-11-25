@@ -1,6 +1,6 @@
 """Run the three bandit experiments, print summary tables and save the plots.
 
-    python modules/m01-bandits/run_experiment.py            # 500 runs (about 2 minutes)
+    python modules/m01-bandits/run_experiment.py            # 500 runs (about 3 minutes)
     python modules/m01-bandits/run_experiment.py --runs 100 # quick look while debugging
 """
 
@@ -14,11 +14,12 @@ from agents import UCB, EpsilonGreedy, GradientBandit
 from bandits import run
 
 N_STEPS = 1000
+N_STEPS_EPSILON = 3000  # epsilon = 0.01 needs this long to overtake epsilon = 0.1
 HERE = Path(__file__).parent
 
 
 def summarize(name, rewards, optimal):
-    last = slice(-100, None)
+    last = slice(-100, None)  # the last 100 steps of each run
     print(f"{name:<34}{rewards.mean():9.3f}{rewards[:, last].mean():11.3f}{optimal[:, last].mean() * 100:11.1f}%")
 
 
@@ -40,10 +41,10 @@ def plot(results, title, filename):
     print(f"Saved {HERE / filename}\n")
 
 
-def experiment(title, configs, filename, n_runs, mean=0.0):
+def experiment(title, configs, filename, n_runs, mean=0.0, n_steps=N_STEPS):
     print(title)
     print(f"{'agent':<34}{'avg reward':>9}{'last 100':>11}{'% optimal':>12}")
-    results = {name: run(factory, n_runs, N_STEPS, mean=mean) for name, factory in configs.items()}
+    results = {name: run(factory, n_runs, n_steps, mean=mean) for name, factory in configs.items()}
     for name, (r, o) in results.items():
         summarize(name, r, o)
     plot(results, title, filename)
@@ -53,7 +54,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", type=int, default=500)
     n_runs = parser.parse_args().runs
-    print(f"{n_runs} runs x {N_STEPS} steps per agent\n")
+    print(f"{n_runs} runs x {N_STEPS} steps per agent (experiment 1: {max(n_runs // 2, 1)} runs x {N_STEPS_EPSILON} steps)\n")
 
     experiment(
         "1. How much to explore? (epsilon-greedy)",
@@ -63,7 +64,8 @@ def main():
             "eps=0.1": lambda k, rng: EpsilonGreedy(k, 0.1, rng),
         },
         "results_epsilon.png",
-        n_runs,
+        max(n_runs // 2, 1),
+        n_steps=N_STEPS_EPSILON,
     )
     experiment(
         "2. Smarter exploration",
