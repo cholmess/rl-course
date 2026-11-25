@@ -6,7 +6,7 @@ A bandit is RL with the hard parts removed: your actions don't change what situa
 
 ## 1. Read (about 1 to 2 hours)
 
-The quickest way is the **reading guide on the course page** ("Lecturas", written to be read on a phone). It covers sections 2.1 to 2.9 in about 40 minutes. If you want more depth, the original is:
+The quickest way is the **reading guide on the course page** ("Readings", written to be read on a phone). It covers sections 2.1 to 2.9 in about 40 minutes. If you want more depth, the original is:
 
 Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed., free at [incompleteideas.net/book/RLbook2020.pdf](http://incompleteideas.net/book/RLbook2020.pdf)), **chapter 2, sections 2.1 to 2.8**. Skim 2.9 (associative search, also called contextual bandits): you'll come back to it in phase 5 for your own work problem.
 
